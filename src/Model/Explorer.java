@@ -14,7 +14,8 @@ public class Explorer extends Stats {
 	private String start;
 	private String defeat;
 	
-	public Explorer(String Name, String Victory, String Start, String Defeat){
+	public Explorer(String Name, int Hp, int Attack, int Defense, int Speed, String Victory, String Start, String Defeat){
+		super(200, 30, 30, 100);
 		setName(name);
 		setVictory(victory);
 		setDefeat(defeat);

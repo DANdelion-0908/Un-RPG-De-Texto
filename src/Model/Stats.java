@@ -14,6 +14,13 @@ public abstract class Stats {
 	protected int defense;
 	protected int speed;
 	
+	public Stats(int hp, int attack, int defense, int speed) {
+		this.hp = hp;
+		this.attack = attack;
+		this.defense = defense;
+		this.speed = speed;
+	}
+	
 	public int getHp() {
 		return hp;
 	}

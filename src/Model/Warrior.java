@@ -9,18 +9,21 @@ package Model;
  */
 public class Warrior extends Stats {
 	
-	private String name;
+	public static String name;
 	private String victory;
 	private String start;
 	private String defeat;
 	
-	public Warrior(String Name, String Victory, String Start, String Defeat){
+	public String[] wInventory = {"Potion", "Potion", "Potion", "Protein", "Esteroids", "Insta Coffee"};
+	
+	public Warrior(String Name, int Hp, int Attack, int Defense, int Speed, String Victory, String Start, String Defeat){
+		super(500, 60, 70, 30);
 		setName(name);
 		setVictory(victory);
 		setDefeat(defeat);
 		setStart(start);
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -52,6 +55,5 @@ public class Warrior extends Stats {
 	public void setDefeat(String defeat) {
 		this.defeat = defeat;
 	}
-	
-	
+		
 }
