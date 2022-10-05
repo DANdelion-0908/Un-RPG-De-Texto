@@ -16,6 +16,7 @@ public abstract class Character  {
 	protected int hp;
 	protected int attack;
 	
+	// A constructor that takes in the parameters and sets them to the variables.
 	public Character(String Name, int Hp, int Attack, String Victory, String Start, String Defeat){
 		setName(Name);
 		setVictory(victory);

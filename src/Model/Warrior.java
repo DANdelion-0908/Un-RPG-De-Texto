@@ -14,8 +14,10 @@ public class Warrior extends Character {
 	private String start;
 	private String defeat;
 	
+	// Creating an array of strings.
 	public String[] wInventory = {"Potion", "Potion", "Potion", "Protein", "Esteroids", "Insta Coffee"};
 	
+	// Calling the constructor of the superclass.
 	public Warrior(){
 		super("Máximo", 500, 60, "¡Tu vida acaba aquí!", "No hay nada como una batalla emocionante.", "... Tal parece que... no he sido lo suficientemente fuerte...");
 	}

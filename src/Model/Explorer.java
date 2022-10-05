@@ -14,6 +14,7 @@ public class Explorer extends Character {
 	private String start;
 	private String defeat;
 	
+	// Calling the constructor of the superclass.
 	public Explorer(){
 		super("Jorge", 300, 40, "¡Expedición completada!", "Se viene una gran aventura.", "Mi aventura... acaba aquí...");
 	}
