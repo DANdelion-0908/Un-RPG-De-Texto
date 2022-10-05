@@ -7,13 +7,13 @@ package Model;
  * @author Dan
  *
  */
-public class Lizard extends Stats{
+public class Lizard extends Character{
 	
 	private String name;
 	private boolean boss;
 	
-	public Lizard(String Name, boolean Boss) {
-		super(600, 40, 40, 40);
+	public Lizard() {
+		super("Lagartija", 600, 40, "*Saca su lengua con furia*", "*Comienza a calentar*", "*Cae al suelo*");
 		setName(name);
 		setBoss(boss);
 	}

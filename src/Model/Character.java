@@ -15,19 +15,13 @@ public abstract class Character  {
 	private String defeat;
 	protected int hp;
 	protected int attack;
-	protected int defense;
-	protected int speed;
 	
-public String[] wInventory = {"Potion", "Potion", "Potion", "Protein", "Esteroids", "Insta Coffee"};
-	
-	public Character(String Name, int Hp, int Attack, int Defense, int Speed, String Victory, String Start, String Defeat){
+	public Character(String Name, int Hp, int Attack, String Victory, String Start, String Defeat){
 		setName(Name);
 		setVictory(victory);
 		setDefeat(defeat);
 		setStart(start);
 		setAttack(attack);
-		setDefense(defense);
-		setSpeed(speed);
 		setHp(hp);
 	}
 	
@@ -42,18 +36,6 @@ public String[] wInventory = {"Potion", "Potion", "Potion", "Protein", "Esteroid
 	}
 	public void setAttack(int attack) {
 		this.attack = attack;
-	}
-	public int getDefense() {
-		return defense;
-	}
-	public void setDefense(int defense) {
-		this.defense = defense;
-	}
-	public int getSpeed() {
-		return speed;
-	}
-	public void setSpeed(int speed) {
-		this.speed = speed;
 	}
 	
 	public String getName() {

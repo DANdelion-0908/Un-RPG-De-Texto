@@ -7,13 +7,13 @@ package Model;
  * @author Dan
  *
  */
-public class Bush extends Stats{
+public class Bush extends Character{
 	
 	private String name;
 	private boolean boss;
 	
-	public Bush(String Name, boolean Boss) {
-		super(400, 50, 20, 60);
+	public Bush() {
+		super("Arbusto Malvado", 500, 30, "*Sonidos de arbusto*", "*Se estremece*", "*Han caído sus hojas*");
 		setName(name);
 		setBoss(boss);
 	}

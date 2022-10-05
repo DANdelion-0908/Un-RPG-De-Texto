@@ -15,7 +15,7 @@ public class Explorer extends Character {
 	private String defeat;
 	
 	public Explorer(){
-		super("Jorge", 300, 40, 30, 100, "¡Expedición completada!", "Se viene una gran aventura.", "Mi aventura... acaba aquí...");
+		super("Jorge", 300, 40, "¡Expedición completada!", "Se viene una gran aventura.", "Mi aventura... acaba aquí...");
 	}
 
 	public String getName() {
