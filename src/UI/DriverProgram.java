@@ -208,6 +208,14 @@ public class DriverProgram {
 						System.out.println("- " + player.getName());
 						battle = 1;
 					}
+					
+					if(lizard.getHp() <= 0&& bush.getHp()<= 0) {
+						System.out.println("¡Has ganado el combate!");
+						System.out.println(player.getVictory());
+						System.out.println("- " + player.getName());
+						battle = 1;
+					}
+					
 					}
 				}
 			}
