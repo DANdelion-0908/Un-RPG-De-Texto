@@ -63,7 +63,7 @@ public class DriverProgram {
                 	// Checking if the user has chosen the warrior class. If the user has chosen the warrior class, the
                 	// program will continue.
                 	if(elec == 1) {
-                		key++;	
+                		key=1;	
                 	
                 	// Checking if the user has chosen the explorer class. If the user has chosen the explorer class,
                 	// the program will continue.
@@ -106,6 +106,7 @@ public class DriverProgram {
                 		System.out.println("Elige una opción válida");
                 		key = 0;
                 	}
+                }
                 }
                 System.out.println("Ahora, tus épicas batallas — de texto — tendrán lugar en la sagrada Terminal");
                 
@@ -280,7 +281,7 @@ public class DriverProgram {
                 		
                 		}
                 	}
-                }
+                
             }
 			
 			
