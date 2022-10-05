@@ -151,7 +151,63 @@ public class DriverProgram {
 								}
 						}
 						
+						if(action == 2) {
+							System.out.println("Selecciona el objeto que usarás");
+							System.out.println("1. Poción | 2. Café | 3. Explosivos");
+
+							int object = entrada.nextInt();
+							
+							if(object == 1) {
+								player.setHp(player.getHp() + 100);
+								System.out.println("Has usado una poción y has recuperado 100 puntos de vida. Tu vida actual es: " + player.getHp());
+							} else if(object == 2) {
+								player.setHp(player.getAttack() + 20);
+								System.out.println("Has bebido una deliciosa taza de café. Tu ataque aumenta en 10");
+							}else if(object == 3) {
+								lizard.setHp(lizard.getHp() - 100);
+								bush.setHp(bush.getHp() - 100);
+								
+								System.out.println("Has lanzado un explosivo a tus enemigos.");
+								System.out.println("La vida actual del Arbusto es: " + bush.getHp());
+								
+								if(bush.getHp() == 0) {
+									System.out.println("El Arbusto ha sido derrotado");
+								}
+									
+								System.out.println("La vida actual de la Lagartija es: " + lizard.getHp());
+								if(lizard.getHp() == 0) {
+									System.out.println("La Lagartija ha sido derrotada");
+									}
+								
+							}
 						}
+						
+						if(action == 3) {
+							System.out.println("Has pasado tu turno");
+						}
+						
+						if (action == 4) {
+							System.out.println("Has huido.");
+							battle = 1;
+						}
+						
+						}
+					if(bush.getHp() > 0) {
+					System.out.println("El Arbusto carga contra ti");
+					player.setHp(player.getHp() - bush.getAttack());
+					}
+					if(lizard.getHp() > 0 ) {
+					System.out.println("La lagartija ataca con sus garras");
+					player.setHp(player.getHp() - lizard.getAttack());
+					}
+					System.out.println("Tu vida actual es: " + player.getHp());
+					
+					if(player.getHp() <= 0) {
+						System.out.println("Has sido derrotado");
+						System.out.println(player.getDefeat());
+						System.out.println("- " + player.getName());
+						battle = 1;
+					}
 					}
 				}
 			}
