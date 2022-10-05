@@ -4,9 +4,7 @@
 package UI;
 
 import java.util.Scanner;
-import Model.Stats;
 import java.util.ArrayList;
-import Model.Stats;
 import Model.Explorer;
 import Model.Warrior;
 
@@ -22,14 +20,12 @@ public class DriverProgram {
 	public static void main(String[] args) {
 			Scanner entrada = new Scanner(System.in);
 			
+			
 			System.out.println("****************");
 			System.out.println("UN RPG DE TEXTO");
 			System.out.println("****************");
 			System.out.println();
-			
-			System.out.println("Bienvenido, viajero. ¿Cuál es tu nombre?");
-			String nameP = entrada.nextLine();
-			
+
 			System.out.println("En este juego puedes elegir entre dos clases de héroes:");
 			System.out.println();
 			System.out.println("Un guerrero: un luchador muy poderoso que posee estadísticas altas de ataque y defensa");

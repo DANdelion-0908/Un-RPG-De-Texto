@@ -7,19 +7,15 @@ package Model;
  * @author Dan
  *
  */
-public class Explorer extends Stats {
+public class Explorer extends Character {
 	
 	private String name;
 	private String victory;
 	private String start;
 	private String defeat;
 	
-	public Explorer(String Name, int Hp, int Attack, int Defense, int Speed, String Victory, String Start, String Defeat){
-		super(200, 30, 30, 100);
-		setName(name);
-		setVictory(victory);
-		setDefeat(defeat);
-		setStart(start);
+	public Explorer(){
+		super("Jorge", 300, 40, 30, 100, "¡Expedición completada!", "Se viene una gran aventura.", "Mi aventura... acaba aquí...");
 	}
 
 	public String getName() {
