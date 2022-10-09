@@ -201,7 +201,15 @@ public class DriverProgram {
                 				// saying that the player has used a coffee and has increased his attack by 20.
                 				} else if(object == 2) {
                 					player.setHp(player.getAttack() + 20);
-                					System.out.println("Has bebido una deliciosa taza de café. Tu ataque aumenta en 10");
+                					System.out.println("Has bebido una deliciosa taza de café. Tu ataque aumenta en 20");
+                					System.out.println("...");
+                					String xd = entrada.nextLine();
+                					
+                					System.out.println("Aumentar tus estadísticas no es correcto. Tu castigo por ello será: ");
+                					System.out.println("LA MUERTE INSTANTÁNEA");
+                					System.out.println();
+                					System.out.println("Tus enemigos unen fuerzas y ejecutan un poderoso ataque");
+                					
 
                 				// This code is checking if the user has chosen to use the explosives. If the user has chosen to
                 				// use the explosives, the code will subtract 100 from the lizard's hp and the bush's hp. Then,
