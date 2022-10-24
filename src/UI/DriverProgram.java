@@ -64,6 +64,9 @@ public class DriverProgram {
                 		player.setVictory("¡Tu vida acaba aquí!");
                 		player.setDefeat("... Tal parece que... no he sido lo suficientemente fuerte...");
                 		player.setName("Máximo");
+                		player.setPotion(10);
+                		player.setBomb(5);
+                		player.setCoffee(1);
                 		String election = "Guerrero";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -98,6 +101,9 @@ public class DriverProgram {
                 		player.setVictory("¡Expedición completada!");
                 		player.setDefeat("Mi aventura... acaba aquí...");
                 		player.setName("Jorge");
+                		player.setBomb(10);
+                		player.setPotion(15);
+                		player.setCoffee(1);
                 		String election = "Explorador";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -190,7 +196,7 @@ public class DriverProgram {
                 			// This code is asking the user to choose an object to use.
                 			if(action == 2) {
                 				System.out.println("Selecciona el objeto que usarás");
-                				System.out.println("1. Poción | 2. Café | 3. Explosivos");
+                				System.out.println("1. Poción (" + player.getPotion() + ")" + "| 2. Café (" + player.getCoffee() + ") | 3. Explosivos (" + player.getBomb() + ")");
 
                 				int object = entrada.nextInt();
                 				
@@ -199,8 +205,14 @@ public class DriverProgram {
                 				// saying that the player has used a potion and has recovered 100 hp. Finally, the code will
                 				// print the player's current hp.
                 				if(object == 1) {
+                					if(player.getPotion() > 0) {
                 					player.setHp(player.getHp() + 100);
                 					System.out.println("Has usado una poción y has recuperado 100 puntos de vida. Tu vida actual es: " + player.getHp());
+                					player.setPotion(player.getPotion() - 1);
+                					
+                					}else if(player.getPotion() <= 0) {
+                						System.out.println("No posees pociones.");
+                					}
 
                 				// This code is checking if the user has chosen to use the coffee. If the user has chosen to use
                 				// the coffee, the code will add 20 to the player's attack. Then, the code will print a message
@@ -217,7 +229,8 @@ public class DriverProgram {
                 				// hp is 0. If the lizard's hp is 0, the code will print a message saying that the lizard has
                 				// been defeated. If the bush's hp is 0, the code will print a message saying that the bush has
                 				// been defeated.
-                				}else if(object == 3) {
+                				} else if(object == 3) {
+                					if(player.getBomb() > 0) {
                 					lizard.setHp(lizard.getHp() - 100);
                 					bush.setHp(bush.getHp() - 100);
                 					
@@ -233,6 +246,11 @@ public class DriverProgram {
                 						System.out.println("La Lagartija ha sido derrotada");
                 						}
                 					
+                					player.setBomb(player.getBomb() - 1);
+                					
+                				} else if(player.getBomb() == 0) {
+                					System.out.println("No posees explosivos.");
+                				}
                 				}
                 			}
                 			
@@ -613,8 +631,10 @@ public class DriverProgram {
                 						raidminion.setHp(0);
                 					}
                 				
-                				}else {
+                				}else if(bossAction == 4){
+                					if(raidminion.getHp() <= 0) {
                 					raidminion.setHp(0);
+                					}
                 				}
                 			
                 				if(raidminion.getHp() > 0) {
