@@ -305,9 +305,9 @@ public class DriverProgram {
                 		
                 		}
                 	
-                }else if(mode == 2);
+                }else if(mode == 2) {
                 
-                System.out.println("En este juego puedes elegir entre tres clases de héroes:");
+                System.out.println("Has seleccionado el modo Asalto. En este modo puedes elegir entre tres clases de héroes:");
                 System.out.println();
                 System.out.println("Un guerrero: un luchador muy poderoso que posee estadísticas altas de ataque y defensa");
                 System.out.println("pero, debido a su armadura y equipo, posee baja velocidad y poco espacio para ítems");
@@ -672,6 +672,9 @@ public class DriverProgram {
                 		}
                 		
                 		}
+			} else {
+				System.out.println("Elige una opción válida");
+			}
 			}
 	}
 	
