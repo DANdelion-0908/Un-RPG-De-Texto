@@ -336,6 +336,9 @@ public class DriverProgram {
                 		player.setVictory("¡Tu vida acaba aquí!");
                 		player.setDefeat("... Tal parece que... no he sido lo suficientemente fuerte...");
                 		player.setName("Máximo");
+                		player.setPotion(15);
+                		player.setBomb(10);
+                		player.setCoffee(1);
                 		String election = "Guerrero";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -370,6 +373,9 @@ public class DriverProgram {
                 		player.setVictory("¡Expedición completada!");
                 		player.setDefeat("Mi aventura... acaba aquí...");
                 		player.setName("Jorge");
+                		player.setBomb(20);
+                		player.setPotion(25);
+                		player.setCoffee(1);
                 		String election = "Explorador";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -400,6 +406,9 @@ public class DriverProgram {
                 		player.setVictory("Caza completada con éxito");
                 		player.setDefeat("Creo que esta fue mi última cacería...");
                 		player.setName("Mario");
+                		player.setPotion(15);
+                		player.setBomb(10);
+                		player.setCoffee(1);
                 		String election = "Cazador";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -488,6 +497,9 @@ public class DriverProgram {
                 				if(move == 1) {
                 					lizard.setHp(lizard.getHp() - player.getAttack());
                 					System.out.println("Has atacado a la Lagartija y le has quitado " + player.getAttack() + " de vida.");
+                					System.out.println("Tu lobo ataca contigo");
+                					System.out.println("Ha atacado a la Lagartija y le ha quitado 20 de vida.");
+                					lizard.setHp(lizard.getHp() - 20);
                 					System.out.println("La vida actual de la Lagartija es: " + lizard.getHp());
                 					if(lizard.getHp() == 0) {
                 						System.out.println("La Lagartija ha sido derrotada");
@@ -502,6 +514,9 @@ public class DriverProgram {
                 				}else if(move == 2) {
                 					bush.setHp(bush.getHp() - player.getAttack());
                 					System.out.println("Has atacado al Arbusto y le has quitado " + player.getAttack() + " de vida.");
+                					System.out.println("Tu lobo ataca contigo");
+                					System.out.println("Ha atacado al Arbusto y le ha quitado 20 de vida.");
+                					lizard.setHp(bush.getHp() - 20);
                 					System.out.println("La vida actual del Arbusto es: " + bush.getHp());
                 					if(bush.getHp() == 0) {
                 						System.out.println("El Arbusto ha sido derrotado");
@@ -509,6 +524,9 @@ public class DriverProgram {
                 				}else if(move == 3) {
                 					raidboss.setHp(raidboss.getHp() - player.getAttack());
                 					System.out.println("Has atacado a " + raidboss.getName()+ " y le has quitado " + player.getAttack() + " de vida.");
+                					System.out.println("Tu lobo ataca contigo");
+                					System.out.println("Ha atacado a " + raidboss.getName() + " y le ha quitado 20 de vida.");
+                					lizard.setHp(raidboss.getHp() - 20);
                 					System.out.println("La vida actual de " + raidboss.getName() + " es: " + raidboss.getHp());
                 					if(raidboss.getHp() <= 0) {
                 						System.out.println(raidboss.getName() + " ha sido derrotado");
@@ -517,6 +535,9 @@ public class DriverProgram {
                 					if(raidminion.getHp() > 0) {
                 						raidminion.setHp(raidminion.getHp() - player.getAttack());
                     					System.out.println("Has atacado a " + raidminion.getName()+ " y le has quitado " + player.getAttack() + " de vida.");
+                    					System.out.println("Tu lobo ataca contigo");
+                    					System.out.println("Ha atacado a " + raidminion.getName() + " y le ha quitado 20 de vida.");
+                    					lizard.setHp(lizard.getHp() - 20);
                     					System.out.println("La vida actual de " + raidminion.getName() + " es: " + raidminion.getHp());
                     					if(raidminion.getHp() <= 0) {
                     						System.out.println(raidminion.getName() + " ha sido derrotado");
@@ -529,7 +550,7 @@ public class DriverProgram {
                 			// This code is asking the user to choose an object to use.
                 			if(action == 2) {
                 				System.out.println("Selecciona el objeto que usarás");
-                				System.out.println("1. Poción | 2. Café | 3. Explosivos");
+                				System.out.println("1. Poción (" + player.getPotion() + ")" + "| 2. Café (" + player.getCoffee() + ") | 3. Explosivos (" + player.getBomb() + ")");
 
                 				int object = entrada.nextInt();
                 				
@@ -538,8 +559,14 @@ public class DriverProgram {
                 				// saying that the player has used a potion and has recovered 100 hp. Finally, the code will
                 				// print the player's current hp.
                 				if(object == 1) {
+                					if(player.getPotion() > 0) {
                 					player.setHp(player.getHp() + 100);
                 					System.out.println("Has usado una poción y has recuperado 100 puntos de vida. Tu vida actual es: " + player.getHp());
+                					player.setPotion(player.getPotion() - 1);
+                					
+                					}else if(player.getPotion() <= 0) {
+                						System.out.println("No posees pociones.");
+                					}
 
                 				// This code is checking if the user has chosen to use the coffee. If the user has chosen to use
                 				// the coffee, the code will add 20 to the player's attack. Then, the code will print a message
@@ -556,13 +583,10 @@ public class DriverProgram {
                 				// hp is 0. If the lizard's hp is 0, the code will print a message saying that the lizard has
                 				// been defeated. If the bush's hp is 0, the code will print a message saying that the bush has
                 				// been defeated.
-                				}else if(object == 3) {
+                				} else if(object == 3) {
+                					if(player.getBomb() > 0) {
                 					lizard.setHp(lizard.getHp() - 100);
                 					bush.setHp(bush.getHp() - 100);
-                					raidboss.setHp(raidboss.getHp() - 100);
-                					if(raidminion.getHp() > 0) {
-                						raidminion.setHp(raidminion.getHp() - 100);
-                					}
                 					
                 					System.out.println("Has lanzado un explosivo a tus enemigos.");
                 					System.out.println("La vida actual del Arbusto es: " + bush.getHp());
@@ -574,6 +598,7 @@ public class DriverProgram {
                 					System.out.println("La vida actual de la Lagartija es: " + lizard.getHp());
                 					if(lizard.getHp() == 0) {
                 						System.out.println("La Lagartija ha sido derrotada");
+                						
                 						}
                 					
                 					System.out.println("La vida actual de " + raidboss.getName() + " es: " + raidboss.getHp());
@@ -585,6 +610,15 @@ public class DriverProgram {
                 					if(raidminion.getHp() == 0) {
                 						System.out.println(raidminion.getName() + " ha sido derrotado");
                 						}
+                					
+                					player.setBomb(player.getBomb() - 1);
+                					
+                				} else if(player.getBomb() == 0) {
+                					System.out.println("No posees explosivos.");
+                				}
+                				
+                					
+                					
                 					
                 				}
                 			}
