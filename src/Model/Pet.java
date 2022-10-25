@@ -23,7 +23,5 @@ public class Pet extends Character {
 	public Pet(){
 		super("", 0, 0, "", "", "", 0, 0, 0);
 	}
-		// TODO Auto-generated constructor stub
 	
-
 }

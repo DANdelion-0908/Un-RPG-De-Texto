@@ -12,6 +12,7 @@ import Model.Bush;
 import Model.RaidBoss;
 import Model.Hunter;
 import Model.RaidMinion;
+import Model.Pet;
 
 /**
  * @author Dan
@@ -27,6 +28,7 @@ public class DriverProgram {
                 Bush bush = null;
                 RaidBoss raidboss = null;
                 RaidMinion raidminion = null;
+                Pet pet = null;
                 
                 System.out.println("****************");
                 System.out.println("UN RPG DE TEXTO");
@@ -345,6 +347,7 @@ public class DriverProgram {
                 		System.out.println("1. Sí");
                 		System.out.println("2. No");
                 		int elec = entrada.nextInt();
+                		boolean haspet = false;
                 	
                 	
                 	// Checking if the user has chosen the warrior class. If the user has chosen the warrior class, the
@@ -382,6 +385,7 @@ public class DriverProgram {
                 		System.out.println("1. Sí");
                 		System.out.println("2. No");
                 		int elec = entrada.nextInt();
+                		boolean haspet = false;
                 	
                 	// Checking if the user has chosen the warrior class. If the user has chosen the warrior class, the
                 	//  program will continue.
@@ -415,6 +419,7 @@ public class DriverProgram {
                 		System.out.println("1. Sí");
                 		System.out.println("2. No");
                 		int elec = entrada.nextInt();
+                		boolean haspet = true;
                 	
                 	// Checking if the user has chosen the warrior class. If the user has chosen the warrior class, the
                 	//  program will continue.
@@ -454,6 +459,10 @@ public class DriverProgram {
 				raidminion.setHp(0);
 				raidminion.setAttack(0);
 				raidminion.setName("Vossie");
+				
+				pet = new Pet();
+				pet.setHp(0);
+				pet.setAttack(0);
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 				
                 System.out.println();
@@ -583,6 +592,7 @@ public class DriverProgram {
                 				// hp is 0. If the lizard's hp is 0, the code will print a message saying that the lizard has
                 				// been defeated. If the bush's hp is 0, the code will print a message saying that the bush has
                 				// been defeated.
+                					
                 				} else if(object == 3) {
                 					if(player.getBomb() > 0) {
                 					lizard.setHp(lizard.getHp() - 100);
@@ -615,26 +625,28 @@ public class DriverProgram {
                 					
                 				} else if(player.getBomb() == 0) {
                 					System.out.println("No posees explosivos.");
+                				}              				               					             				              					
                 				}
-                				
-                					
-                					
-                					
-                				}
-                			}
-                			
+                			}                			
                 			// This code is printing a message saying that the player has passed his turn.
                 			if(action == 3) {
                 				System.out.println("Has pasado tu turno");
-                			}
-                			
+                			}               			
                 			// This code is printing a message saying that the player has fled.
                 			if (action == 4) {
                 				System.out.println("Has huido.");
                 				battle = 1;
                 				break;
-                			}
-                			
+                			}               			
+                			if(action == 5) {
+                				if (player.getName() == "Mario") {
+                					System.out.println(player.getName() + " ha lanzado a su mascota al campo.");
+                    				pet.setHp(300);
+                    				pet.setAttack(40);
+                					
+                					
+                				}
+                			}               			
                 			}
                 		// This code is checking if the bush's hp is greater than 0. If the bush's hp is greater than 0,
                 		// the code will print a message saying that the bush has charged against the player. Then, the
@@ -642,16 +654,14 @@ public class DriverProgram {
                 		if(bush.getHp() > 0) {
                 		System.out.println("El Arbusto carga contra ti");
                 		player.setHp(player.getHp() - bush.getAttack());
-                		}
-                		
+                		}               		
                 		// This code is checking if the lizard's hp is greater than 0. If the lizard's hp is greater than
                 		// 0, the code will print a message saying that the lizard has charged against the player. Then,
                 		// the code will subtract the lizard's attack from the player's hp.
                 		if(lizard.getHp() > 0 ) {
                 		System.out.println("La lagartija ataca con sus garras");
                 		player.setHp(player.getHp() - lizard.getAttack());
-                		}
-                		
+                		}                		
                 		if(raidboss.getHp() > 0 ) {
                 			double bossAction = Math.floor(Math.random()*10+1);
 							
@@ -663,29 +673,22 @@ public class DriverProgram {
                 					if(raidminion.getHp() > 0) {
                 						System.out.println(raidboss.getName() + " ha acabado con su aliado");
                 						raidminion.setHp(0);
-                					}
-                				
+                					}               				
                 				}else if(bossAction == 4){
                 					if(raidminion.getHp() <= 0) {
                 					raidminion.setHp(0);
                 					}
-                				}
-                			
+                				}              			
                 				if(raidminion.getHp() > 0) {
                 					System.out.println( raidminion.getName() +  " te ha atacado.");
                 					player.setHp(player.getHp() - raidminion.getAttack());
                 				}
                 			}
-                		
-                			
-                		
-            
+                		          
                 			if(raidboss.getHp() > 0) {
                     		System.out.println(raidboss.getName() + " ataca ferozmente");
                     		player.setHp(player.getHp() - raidboss.getAttack());
-                    		}
-                		
-                	
+                    		}          		               	
                 		
                 		// Checking if the player's health is less than or equal to 0. If it is, it will print out the
                 		// player's defeat message and the player's name. It will also set the battle variable to 1.
@@ -703,13 +706,11 @@ public class DriverProgram {
                 			System.out.println(player.getVictory());
                 			System.out.println("- " + player.getName());
                 			battle = 1;
-                		}
-                		
+                		}                		
                 		}
 			} else {
 				System.out.println("Elige una opción válida");
 			}
 			}
-	}
-	
+	}	
 }
