@@ -13,7 +13,7 @@ public abstract class Character  {
 	private String victory;
 	private String start;
 	private String defeat;
-	protected int hp;
+	protected double hp;
 	protected int attack;
 	protected int potion;
 	protected int coffee;
@@ -33,11 +33,11 @@ public abstract class Character  {
 		
 	}
 	
-	public int getHp() {
+	public double getHp() {
 		return hp;
 	}
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setHp(double d) {
+		this.hp = d;
 	}
 	public int getAttack() {
 		return attack;
