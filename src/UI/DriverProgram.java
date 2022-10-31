@@ -306,7 +306,7 @@ public class DriverProgram {
                 		}
                 		
                 		}
-                	
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////              	
                 }else if(mode == 2) {
                 
                 System.out.println("Has seleccionado el modo Asalto. En este modo puedes elegir entre tres clases de héroes:");
@@ -688,7 +688,20 @@ public class DriverProgram {
                 			if(raidboss.getHp() > 0) {
                     		System.out.println(raidboss.getName() + " ataca ferozmente");
                     		player.setHp(player.getHp() - raidboss.getAttack());
-                    		}          		               	
+                    		
+                    		double bossSpecial = Math.floor(Math.random()*10+1);
+                    		
+                    		if(bossSpecial <= 3) {
+                    			System.out.println(raidboss.getName() + " te lanza un poderoso rayo.");
+                    			player.setHp(player.getHp() - ((raidboss.getAttack() * 0.2) + raidboss.getAttack()));
+                    		}
+                    		
+                    		if(bossSpecial == 4 || bossSpecial == 5) {
+                    			System.out.println(raidboss.getName() + " ha rugido ferozmente.");
+                    			System.out.println("El ataque de " + raidboss.getName() + " ha subido");
+                    			raidboss.setAttack(raidboss.getAttack() + 10);
+                    		}
+                    		}
                 		
                 		// Checking if the player's health is less than or equal to 0. If it is, it will print out the
                 		// player's defeat message and the player's name. It will also set the battle variable to 1.
