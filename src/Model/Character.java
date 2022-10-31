@@ -14,7 +14,7 @@ public abstract class Character  {
 	private String start;
 	private String defeat;
 	protected double hp;
-	protected int attack;
+	protected double attack;
 	protected int potion;
 	protected int coffee;
 	protected int bomb;
@@ -39,11 +39,11 @@ public abstract class Character  {
 	public void setHp(double d) {
 		this.hp = d;
 	}
-	public int getAttack() {
+	public double getAttack() {
 		return attack;
 	}
-	public void setAttack(int attack) {
-		this.attack = attack;
+	public void setAttack(double d) {
+		this.attack = d;
 	}
 	
 	public String getName() {

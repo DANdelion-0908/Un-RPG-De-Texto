@@ -332,7 +332,7 @@ public class DriverProgram {
                 	// This is the code that is executed when the user chooses the warrior class.
                 	if(opt == 1) {
                 		player = new Warrior();
-                		player.setHp(500);
+                		player.setHp(1200);
                 		player.setAttack(50);
                 		player.setStart("No hay nada como una batalla emocionante.");
                 		player.setVictory("¡Tu vida acaba aquí!");
@@ -340,7 +340,7 @@ public class DriverProgram {
                 		player.setName("Máximo");
                 		player.setPotion(15);
                 		player.setBomb(10);
-                		player.setCoffee(1);
+                		player.setCoffee(5);
                 		String election = "Guerrero";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -370,7 +370,7 @@ public class DriverProgram {
                 	// This is the code that is executed when the user chooses the explorer class.
                 	else if(opt == 2) {
                 		player = new Explorer();
-                		player.setHp(300);
+                		player.setHp(900);
                 		player.setAttack(30);
                 		player.setStart("Se viene una gran aventura.");
                 		player.setVictory("¡Expedición completada!");
@@ -378,7 +378,7 @@ public class DriverProgram {
                 		player.setName("Jorge");
                 		player.setBomb(20);
                 		player.setPotion(25);
-                		player.setCoffee(1);
+                		player.setCoffee(5);
                 		String election = "Explorador";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -404,7 +404,7 @@ public class DriverProgram {
                 }
                 	else if(opt == 3) {
                 		player = new Hunter();
-                		player.setHp(250);
+                		player.setHp(800);
                 		player.setAttack(25);
                 		player.setStart("Es la hora de cazar.");
                 		player.setVictory("Caza completada con éxito");
@@ -412,7 +412,7 @@ public class DriverProgram {
                 		player.setName("Mario");
                 		player.setPotion(15);
                 		player.setBomb(10);
-                		player.setCoffee(1);
+                		player.setCoffee(5);
                 		String election = "Cazador";
                 		System.out.println("Haz elegido " + election);
                 		System.out.println("¿Es esto correcto?");
@@ -454,6 +454,7 @@ public class DriverProgram {
                 raidboss.setHp(3000);
                 raidboss.setAttack(40);
                 raidboss.setName("Voss: el destructor artesano");
+                boolean finalMove = false;
                 
                 raidminion = new RaidMinion();
 				raidminion.setHp(0);
@@ -463,6 +464,7 @@ public class DriverProgram {
 				pet = new Pet();
 				pet.setHp(0);
 				pet.setAttack(0);
+				
 				/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 				
                 System.out.println();
@@ -581,8 +583,14 @@ public class DriverProgram {
                 				// the coffee, the code will add 20 to the player's attack. Then, the code will print a message
                 				// saying that the player has used a coffee and has increased his attack by 20.
                 				} else if(object == 2) {
-                					player.setHp(player.getAttack() + 20);
-                					System.out.println("Has bebido una deliciosa taza de café. Tu ataque aumenta en 10");
+                					if(player.getCoffee() > 0) {
+                					player.setAttack(player.getAttack() + 40);
+                					System.out.println("Has bebido una deliciosa taza de café. Tu ataque aumenta en 40 puntos");
+                					player.setCoffee(player.getCoffee() - 1);
+                					
+                					}else if(player.getCoffee() <= 0) {
+                						System.out.println("No posees tazas de café.");
+                					}
 
                 				// This code is checking if the user has chosen to use the explosives. If the user has chosen to
                 				// use the explosives, the code will subtract 100 from the lizard's hp and the bush's hp. Then,
@@ -595,8 +603,30 @@ public class DriverProgram {
                 					
                 				} else if(object == 3) {
                 					if(player.getBomb() > 0) {
-                					lizard.setHp(lizard.getHp() - 100);
-                					bush.setHp(bush.getHp() - 100);
+                						
+                						if(lizard.getHp()> 0) {
+                							lizard.setHp(lizard.getHp() - 100);
+                						}else if(lizard.getHp() < 100) {
+                							lizard.setHp(0);
+                						}
+                						
+                						if(bush.getHp() > 0) {
+                							bush.setHp(bush.getHp() - 100);
+                						}else if(bush.getHp() < 100) {
+                							bush.setHp(0);
+                						}
+                						
+                						if(raidboss.getHp() > 0) {
+                							raidboss.setHp(raidboss.getHp() - 100);
+                						}else if(raidboss.getHp() < 100) {
+                							raidboss.setHp(0);
+                						}
+                						
+                						if(raidminion.getHp() > 0) {
+                							raidminion.setHp(raidminion.getHp() - 100);
+                						}else if(raidminion.getHp() < 100) {
+                							raidminion.setHp(0);
+                						}
                 					
                 					System.out.println("Has lanzado un explosivo a tus enemigos.");
                 					System.out.println("La vida actual del Arbusto es: " + bush.getHp());
@@ -686,12 +716,22 @@ public class DriverProgram {
                 			}
                 		          
                 			if(raidboss.getHp() > 0) {
-                    		System.out.println(raidboss.getName() + " ataca ferozmente");
-                    		player.setHp(player.getHp() - raidboss.getAttack());
+                				
+                				if(finalMove) {
+                					System.out.println(raidboss.getName() + " ha usado sus poderes arcanos para ejecutar su golpe final.");
+                					System.out.println(raidboss.getName() + " acaba contigo de un poderoso ataque.");
+                					System.out.println("Has sido aniquilado");
+                        			System.out.println("...");
+                        			System.out.println("- " + player.getName());
+                        			
+                					System.exit(battle);
+                				}
+                				System.out.println(raidboss.getName() + " ataca ferozmente");
+                				player.setHp(player.getHp() - raidboss.getAttack());
                     		
-                    		double bossSpecial = Math.floor(Math.random()*10+1);
+                				double bossSpecial = Math.floor(Math.random()*10+1);
                     		
-                    		if(bossSpecial <= 3) {
+                				if(bossSpecial <= 3) {
                     			System.out.println(raidboss.getName() + " te lanza un poderoso rayo.");
                     			player.setHp(player.getHp() - ((raidboss.getAttack() * 0.2) + raidboss.getAttack()));
                     		}
@@ -700,6 +740,25 @@ public class DriverProgram {
                     			System.out.println(raidboss.getName() + " ha rugido ferozmente.");
                     			System.out.println("El ataque de " + raidboss.getName() + " ha subido");
                     			raidboss.setAttack(raidboss.getAttack() + 10);
+                    		}
+                    		
+                    		if(bossSpecial == 6 || bossSpecial == 7) {
+                    			System.out.println(raidboss.getName() + " usa sus poderes para recuperar vitalidad.");
+                    			raidboss.setHp(raidboss.getHp() + 500);
+                    		}
+                    		
+                    		if(bossSpecial == 8 || bossSpecial == 9) {
+                    			System.out.println(raidboss.getName() + " usa sus poderes para robarte estadísticas.");
+                    			
+                    			raidboss.setAttack(raidboss.getAttack() + ((player.getAttack() * 0.1) + player.getAttack()));
+                    			player.setAttack(player.getAttack() - (player.getAttack() * 0.1));
+                    			
+                    			System.out.println("Tu ataque ahora es " + player.getAttack());
+                    		}
+                    		
+                    		if(bossSpecial == 10) {
+                    			System.out.println(raidboss.getName() + " empieza a cargar un ataque...");
+                    			finalMove = true;
                     		}
                     		}
                 		
@@ -714,7 +773,7 @@ public class DriverProgram {
                 		
                 		// Checking if the lizard and bush have 0 hp. If they do, it will print out the victory message
                 		// and the player's name.
-                		if(lizard.getHp() <= 0&& bush.getHp()<= 0) {
+                		if(lizard.getHp() <= 0&& bush.getHp()<= 0 && raidboss.getHp() <= 0 && raidminion.getHp() <= 0) {
                 			System.out.println("¡Has ganado el combate!");
                 			System.out.println(player.getVictory());
                 			System.out.println("- " + player.getName());

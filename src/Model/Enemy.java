@@ -13,8 +13,8 @@ public abstract class Enemy  {
 	private String victory;
 	private String start;
 	private String defeat;
-	protected int hp;
-	protected int attack;
+	protected double hp;
+	protected double attack;
 	protected boolean boss;
 	
 	
@@ -38,17 +38,17 @@ public abstract class Enemy  {
 		this.boss = boss;
 	}
 
-	public int getHp() {
+	public double getHp() {
 		return hp;
 	}
-	public void setHp(int hp) {
-		this.hp = hp;
+	public void setHp(double d) {
+		this.hp = d;
 	}
-	public int getAttack() {
+	public double getAttack() {
 		return attack;
 	}
-	public void setAttack(int attack) {
-		this.attack = attack;
+	public void setAttack(double d) {
+		this.attack = d;
 	}
 	
 	public String getName() {
