@@ -532,6 +532,7 @@ public class DriverProgram {
                 					if(bush.getHp() == 0) {
                 						System.out.println("El Arbusto ha sido derrotado");
                 					}
+                					
                 				}else if(move == 3) {
                 					raidboss.setHp(raidboss.getHp() - player.getAttack());
                 					System.out.println("Has atacado a " + raidboss.getName()+ " y le has quitado " + player.getAttack() + " de vida.");
@@ -542,6 +543,7 @@ public class DriverProgram {
                 					if(raidboss.getHp() <= 0) {
                 						System.out.println(raidboss.getName() + " ha sido derrotado");
                 					}
+                					
                 				}else if(move == 4) {
                 					if(raidminion.getHp() > 0) {
                 						raidminion.setHp(raidminion.getHp() - player.getAttack());
@@ -553,6 +555,7 @@ public class DriverProgram {
                     					if(raidminion.getHp() <= 0) {
                     						System.out.println(raidminion.getName() + " ha sido derrotado");
                     					}
+                    					
                 					}else {
                 						System.out.println("Ese enemigo no existe");
                 					}
@@ -571,8 +574,8 @@ public class DriverProgram {
                 				// print the player's current hp.
                 				if(object == 1) {
                 					if(player.getPotion() > 0) {
-                					player.setHp(player.getHp() + 100);
-                					System.out.println("Has usado una poción y has recuperado 100 puntos de vida. Tu vida actual es: " + player.getHp());
+                					player.setHp(player.getHp() + 300);
+                					System.out.println("Has usado una poción y has recuperado 300 puntos de vida. Tu vida actual es: " + player.getHp());
                 					player.setPotion(player.getPotion() - 1);
                 					
                 					}else if(player.getPotion() <= 0) {
