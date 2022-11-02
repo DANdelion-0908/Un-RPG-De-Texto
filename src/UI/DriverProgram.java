@@ -542,8 +542,17 @@ public class DriverProgram {
                 				// the code will check if the bush's hp is 0. If the bush's hp is 0, the code will print a
                 				// message saying that the bush has been defeated.
                 				}else if(move == 2) {
-                					bush.setHp(bush.getHp() - player.getAttack());
-                					System.out.println("Has atacado al Arbusto y le has quitado " + player.getAttack() + " de vida.");
+                					if(critRate <= 0.5) {
+                						bush.setHp(bush.getHp() - player.getAttack());
+                						System.out.println("Has atacado al arbusto y le has quitado " + player.getAttack() + " de vida.");
+                					
+                					}else if(critRate > 0.5) {
+                						bush.setHp(bush.getHp() - player.getAttack() * 2);
+                						System.out.println("");
+                						System.out.println("¡UN GOLPE CRÍTICO!");
+                						System.out.println("Has atacado al arbusto y le has quitado " + player.getAttack() * 2 + " de vida.");
+                					}
+                					
                 					System.out.println("Tu lobo ataca contigo");
                 					System.out.println("Ha atacado al Arbusto y le ha quitado 20 de vida.");
                 					lizard.setHp(bush.getHp() - 20);
@@ -553,8 +562,17 @@ public class DriverProgram {
                 					}
                 					
                 				}else if(move == 3) {
-                					raidboss.setHp(raidboss.getHp() - player.getAttack());
-                					System.out.println("Has atacado a " + raidboss.getName()+ " y le has quitado " + player.getAttack() + " de vida.");
+                					if(critRate <= 0.5) {
+                						raidboss.setHp(raidboss.getHp() - player.getAttack());
+                						System.out.println("Has atacado a " + raidboss.getName() + " y le has quitado " + player.getAttack() + " de vida.");
+                					
+                					}else if(critRate > 0.5) {
+                						raidboss.setHp(raidboss.getHp() - player.getAttack() * 2);
+                						System.out.println("");
+                						System.out.println("¡UN GOLPE CRÍTICO!");
+                						System.out.println("Has atacado a " + raidboss.getName() + " y le has quitado " + player.getAttack() * 2 + " de vida.");
+                					}
+                					
                 					System.out.println("Tu lobo ataca contigo");
                 					System.out.println("Ha atacado a " + raidboss.getName() + " y le ha quitado 20 de vida.");
                 					lizard.setHp(raidboss.getHp() - 20);
@@ -565,8 +583,17 @@ public class DriverProgram {
                 					
                 				}else if(move == 4) {
                 					if(raidminion.getHp() > 0) {
-                						raidminion.setHp(raidminion.getHp() - player.getAttack());
-                    					System.out.println("Has atacado a " + raidminion.getName()+ " y le has quitado " + player.getAttack() + " de vida.");
+                						if(critRate <= 0.5) {
+                    						raidminion.setHp(raidminion.getHp() - player.getAttack());
+                    						System.out.println("Has atacado a " + raidminion.getName() + " y le has quitado " + player.getAttack() + " de vida.");
+                    					
+                    					}else if(critRate > 0.5) {
+                    						raidminion.setHp(raidminion.getHp() - player.getAttack() * 2);
+                    						System.out.println("");
+                    						System.out.println("¡UN GOLPE CRÍTICO!");
+                    						System.out.println("Has atacado a " + raidminion.getName() + " y le has quitado " + player.getAttack() * 2 + " de vida.");
+                    					}
+                    					
                     					System.out.println("Tu lobo ataca contigo");
                     					System.out.println("Ha atacado a " + raidminion.getName() + " y le ha quitado 20 de vida.");
                     					lizard.setHp(lizard.getHp() - 20);
