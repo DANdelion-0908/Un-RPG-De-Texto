@@ -473,10 +473,15 @@ public class DriverProgram {
                 System.out.println();
                 
                 int battle = 0;
+                int turn = 1;
 
                 while(battle == 0) {
                 	for(int i = 0; i < 1; i++) {
                 		
+                		System.out.println("");
+                		
+                		
+     
                 		if(raidminion.getHp() > 0) {
                 			boolean minionlive = true;
                 		
@@ -486,8 +491,10 @@ public class DriverProgram {
                 			
                 		// This code is asking the user to choose an enemy to attack.
                 			System.out.println("Tu vida actual es " + player.getHp());
+                			System.out.println("Tu ataque actual es " + player.getAttack());
+                			System.out.println("");
                 			System.out.println("Elige la opción que desees ejecutar");
-                			System.out.println("1. Atacar | 2. Usar objeto | 3. Pasar turno | 4. Huir | 5. Lanzar mascota");
+                			System.out.println("1. Atacar | 2. Usar objeto | 3. Pasar turno | 4. Huir | 5. Lanzar mascota | Turno actual: " + turn);
                 			
                 			int action = entrada.nextInt();
                 			
@@ -497,7 +504,10 @@ public class DriverProgram {
                 			if(action == 1) {
                 				System.out.println("¿A qué enemigo vas a atacar?");
                 				System.out.println("1. Lagartija | 2. Arbusto | 3. " + raidboss.getName() + " | 4. " + raidminion.getName());
+                				
                 				int move = entrada.nextInt();
+                				
+                				double critRate = Math.random();
                 				
                 				// This code is checking if the user has chosen to attack the lizard. If the user has chosen to
                 				// attack the lizard, the code will subtract the player's attack from the lizard's hp. Then, the
@@ -506,13 +516,22 @@ public class DriverProgram {
                 				// Finally, the code will check if the lizard's hp is 0. If the lizard's hp is 0, the code will
                 				// print a message saying that the lizard has been defeated.
                 				if(move == 1) {
-                					lizard.setHp(lizard.getHp() - player.getAttack());
-                					System.out.println("Has atacado a la Lagartija y le has quitado " + player.getAttack() + " de vida.");
+                					if(critRate <= 0.5) {
+                						lizard.setHp(lizard.getHp() - player.getAttack());
+                						System.out.println("Has atacado a la Lagartija y le has quitado " + player.getAttack() + " de vida.");
+                					
+                					}else if(critRate > 0.5) {
+                						lizard.setHp(lizard.getHp() - player.getAttack() * 2);
+                						System.out.println("");
+                						System.out.println("¡UN GOLPE CRÍTICO!");
+                						System.out.println("Has atacado a la Lagartija y le has quitado " + player.getAttack() * 2 + " de vida.");
+                					}
+                					
                 					System.out.println("Tu lobo ataca contigo");
                 					System.out.println("Ha atacado a la Lagartija y le ha quitado 20 de vida.");
                 					lizard.setHp(lizard.getHp() - 20);
                 					System.out.println("La vida actual de la Lagartija es: " + lizard.getHp());
-                					if(lizard.getHp() == 0) {
+                					if(lizard.getHp() <= 0) {
                 						System.out.println("La Lagartija ha sido derrotada");
                 					}
 
@@ -529,7 +548,7 @@ public class DriverProgram {
                 					System.out.println("Ha atacado al Arbusto y le ha quitado 20 de vida.");
                 					lizard.setHp(bush.getHp() - 20);
                 					System.out.println("La vida actual del Arbusto es: " + bush.getHp());
-                					if(bush.getHp() == 0) {
+                					if(bush.getHp() <= 0) {
                 						System.out.println("El Arbusto ha sido derrotado");
                 					}
                 					
@@ -673,13 +692,19 @@ public class DriverProgram {
                 			}               			
                 			if(action == 5) {
                 				if (player.getName() == "Mario") {
+                					if(pet.getHp() <= 0) {
                 					System.out.println(player.getName() + " ha lanzado a su mascota al campo.");
                     				pet.setHp(300);
                     				pet.setAttack(40);
-                					
-                					
+                					} else {
+                						System.out.println("Tu mascota ya está en el campo");
+                					}
+                				
+                				}else {
+                					System.out.println("No puedes lanzar a tu mascota con este héroe");
                 				}
-                			}               			
+                			} 
+                				turn ++;
                 			}
                 		// This code is checking if the bush's hp is greater than 0. If the bush's hp is greater than 0,
                 		// the code will print a message saying that the bush has charged against the player. Then, the
@@ -721,13 +746,24 @@ public class DriverProgram {
                 			if(raidboss.getHp() > 0) {
                 				
                 				if(finalMove) {
-                					System.out.println(raidboss.getName() + " ha usado sus poderes arcanos para ejecutar su golpe final.");
-                					System.out.println(raidboss.getName() + " acaba contigo de un poderoso ataque.");
-                					System.out.println("Has sido aniquilado");
-                        			System.out.println("...");
-                        			System.out.println("- " + player.getName());
+                					
+                					double finalMoveAccuracy = Math.random();
+                					
+                					if(finalMoveAccuracy >  0.7) {
+                						System.out.println(raidboss.getName() + " ha usado sus poderes arcanos para ejecutar su golpe final.");
+                						System.out.println(raidboss.getName() + " acaba contigo de un poderoso ataque.");
+                						System.out.println("Has sido aniquilado");
+                						System.out.println("...");
+                						System.out.println("- " + player.getName());
                         			
-                					System.exit(battle);
+                						System.exit(battle);
+                					
+                					}else if(finalMoveAccuracy <= 0.6) {
+                						System.out.println(raidboss.getName() + " ha usado su ataque final...");
+                						System.out.println("Pero ha fallado.");
+                					}
+                					
+                					finalMove = false;
                 				}
                 				System.out.println(raidboss.getName() + " ataca ferozmente");
                 				player.setHp(player.getHp() - raidboss.getAttack());
